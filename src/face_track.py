@@ -10,7 +10,6 @@ cap.set(4,120) # set Height
 #Load a cascade file for detecting faces
 face_cascade = cv2.CascadeClassifier('/home/pi/skeleton_animatronic/xml/face_file.xml')
 
-
 while True:
 
     ret, frame = cap.read()
