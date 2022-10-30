@@ -6,6 +6,7 @@ import numpy as np
 cap = cv2.VideoCapture(0)
 cap.set(3,160) # set Width
 cap.set(4,120) # set Height
+#cap.set(cv2.CAP_PROP_BUFFERSIZE, 3)
 
 #Load a cascade file for detecting faces
 face_cascade = cv2.CascadeClassifier('/home/pi/skeleton_animatronic/xml/face_file.xml')
@@ -17,7 +18,7 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     #Look for faces in the image using the loaded cascade file
-    faces = face_cascade.detectMultiScale(gray, 1.1, 5)
+    faces = face_cascade.detectMultiScale(gray, 1.5, 3)
 
     print("Found "+str(len(faces))+" face(s)")
 
@@ -32,10 +33,10 @@ while True:
     #cv2.imwrite('result.jpg',image)
 
     #Show the result image
-    #cv2.imshow("Face", frame)
+    cv2.imshow("Face", frame)
 
-    #if cv2.waitKey(1) == 27:
-    #    break
+    if cv2.waitKey(1) == 27:
+        break
 
 cap.release()
 cv2.destroyAllWindows()
